@@ -1,0 +1,36 @@
+{
+  "name": "api-client",
+  "private": true,
+  "repository": "https://github.com/mikearnaldi/matechs-effect-examples.git",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@matechs/effect": "^4.0.0-alpha.0",
+    "@matechs/http-client": "^3.1.0-alpha.0",
+    "@matechs/http-client-fetch": "^3.1.0-alpha.0",
+    "@morphic-ts/batteries": "^0.6.2",
+    "@morphic-ts/io-ts-interpreters": "^0.6.2",
+    "fp-ts": "^2.5.3",
+    "fp-ts-contrib": "^0.1.14",
+    "io-ts": "^2.1.2",
+    "io-ts-types": "^0.5.6",
+    "isomorphic-fetch": "^2.2.1",
+    "monocle-ts": "^2.1.0",
+    "newtype-ts": "^0.3.4",
+    "querystring": "^0.2.0",
+    "retry-ts": "^0.1.2"
+  },
+  "devDependencies": {
+    "@types/isomorphic-fetch": "^0.0.35",
+    "@types/jest": "^25.1.2",
+    "@types/node": "^13.7.7",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^25.2.1",
+    "tslint": "^6.0.0",
+    "typescript": "^3.8.3"
+  }
+}
