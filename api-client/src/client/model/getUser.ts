@@ -33,46 +33,50 @@ const optionalBool = (config?: Endomorphism<Mixed>) =>
     )
   );
 
+export interface DecodingError {
+  _tag: "DecodingError";
+  message: string;
+}
+
+export const DecodingError = (errors: string[]): DecodingError => ({
+  _tag: "DecodingError",
+  message: `invalid: ${errors.join(", ")}`
+});
+
 const GetUserResponse_ = summon(F =>
   F.interface(
     {
-      login: F.string(iotsConfig(message("invalid login"))),
-      id: F.number(iotsConfig(message("invalid id"))),
-      node_id: F.string(iotsConfig(message("invalid node_id"))),
-      avatar_url: optionalString(message("invalid avatar url"))(F),
-      gravatar_id: optionalString(message("invalid gravatar id"))(F),
-      url: F.string(iotsConfig(message("invalid url"))),
-      html_url: F.string(iotsConfig(message("invalid html url"))),
-      followers_url: F.string(iotsConfig(message("invalid followers url"))),
-      following_url: F.string(iotsConfig(message("invalid following url"))),
-      gists_url: F.string(iotsConfig(message("invalid gists url"))),
-      starred_url: F.string(iotsConfig(message("invalid starred url"))),
-      subscriptions_url: F.string(
-        iotsConfig(message("invalid subscriptions url"))
-      ),
-      organizations_url: F.string(
-        iotsConfig(message("invalid organizations url"))
-      ),
-      repos_url: F.string(iotsConfig(message("invalid repos url"))),
-      events_url: F.string(iotsConfig(message("invalid event url"))),
-      received_events_url: F.string(
-        iotsConfig(message("invalid received events url"))
-      ),
-      type: F.string(iotsConfig(message("invalid type"))),
-      site_admin: F.boolean(iotsConfig(message("invalid site admin"))),
-      name: F.string(iotsConfig(message("invalid name"))),
-      company: optionalString(message("invalid company"))(F),
-      blog: optionalString(message("invalid company"))(F),
-      location: optionalString(message("invalid location"))(F),
-      email: optionalString(message("invalid email"))(F),
-      hireable: optionalBool(message("invalid hireable"))(F),
-      bio: optionalString(message("invalid bio"))(F),
-      public_repos: F.number(iotsConfig(message("invalid public repos"))),
-      public_gists: F.number(iotsConfig(message("invalid public gists"))),
-      followers: F.number(iotsConfig(message("invalid followers"))),
-      following: F.number(iotsConfig(message("invalid following"))),
-      created_at: F.date(iotsConfig(message("invalid created at"))),
-      updated_at: F.date(iotsConfig(message("invalid updated at")))
+      login: F.string(iotsConfig(message("login"))),
+      id: F.number(iotsConfig(message("id"))),
+      node_id: F.string(iotsConfig(message("node_id"))),
+      avatar_url: optionalString(message("avatar url"))(F),
+      gravatar_id: optionalString(message("gravatar id"))(F),
+      url: F.string(iotsConfig(message("url"))),
+      html_url: F.string(iotsConfig(message("html url"))),
+      followers_url: F.string(iotsConfig(message("followers url"))),
+      following_url: F.string(iotsConfig(message("following url"))),
+      gists_url: F.string(iotsConfig(message("gists url"))),
+      starred_url: F.string(iotsConfig(message("starred url"))),
+      subscriptions_url: F.string(iotsConfig(message("subscriptions url"))),
+      organizations_url: F.string(iotsConfig(message("organizations url"))),
+      repos_url: F.string(iotsConfig(message("repos url"))),
+      events_url: F.string(iotsConfig(message("event url"))),
+      received_events_url: F.string(iotsConfig(message("received events url"))),
+      type: F.string(iotsConfig(message("type"))),
+      site_admin: F.boolean(iotsConfig(message("site admin"))),
+      name: F.string(iotsConfig(message("name"))),
+      company: optionalString(message("company"))(F),
+      blog: optionalString(message("company"))(F),
+      location: optionalString(message("location"))(F),
+      email: optionalString(message("email"))(F),
+      hireable: optionalBool(message("hireable"))(F),
+      bio: optionalString(message("bio"))(F),
+      public_repos: F.number(iotsConfig(message("public repos"))),
+      public_gists: F.number(iotsConfig(message("public gists"))),
+      followers: F.number(iotsConfig(message("followers"))),
+      following: F.number(iotsConfig(message("following"))),
+      created_at: F.date(iotsConfig(message("created at"))),
+      updated_at: F.date(iotsConfig(message("updated at")))
     },
     "GetUserResponse"
   )
@@ -85,5 +89,9 @@ export const GetUserResponse = AsOpaque<GetUserResponseRaw, GetUserResponse>(
   GetUserResponse_
 );
 
-export const decode = flow(GetUserResponse.type.decode, E.mapLeft(failure));
+export const decode = flow(
+  GetUserResponse.type.decode,
+  E.mapLeft(failure),
+  E.mapLeft(DecodingError)
+);
 export const decodeT = T.liftEither(decode);
