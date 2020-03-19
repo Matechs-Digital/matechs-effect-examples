@@ -1,0 +1,26 @@
+{
+  "name": "use-environment",
+  "private": true,
+  "repository": "https://github.com/mikearnaldi/matechs-effect-examples.git",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@matechs/effect": "^5.0.3",
+    "fp-ts": "^2.5.3",
+    "fp-ts-contrib": "^0.1.14",
+    "retry-ts": "^0.1.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.1.2",
+    "@types/node": "^13.7.7",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^25.2.1",
+    "ts-node": "^8.7.0",
+    "tslint": "^6.0.0",
+    "typescript": "^3.8.3"
+  }
+}
