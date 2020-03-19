@@ -4,7 +4,7 @@ import { effect as T, freeEnv as F } from "@matechs/effect";
  * Definition of a calculator module
  */
 
-export const CalculatorURI = "@uris/Calculator";
+export const CalculatorURI = "@uris-free/Calculator";
 
 const Calculator_ = F.define({
   [CalculatorURI]: {

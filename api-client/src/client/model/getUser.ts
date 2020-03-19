@@ -1,5 +1,5 @@
 import { effect as T } from "@matechs/effect";
-import { AsOpaque, summon } from "@morphic-ts/batteries/lib/summoner-no-union";
+import { AsOpaque, summon } from "@morphic-ts/batteries/lib/summoner-ESBAST";
 import { AType, EType } from "@morphic-ts/batteries/lib/usage/utils";
 import { iotsConfig } from "@morphic-ts/io-ts-interpreters/lib/config";
 import * as E from "fp-ts/lib/Either";

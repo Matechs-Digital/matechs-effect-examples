@@ -4,7 +4,7 @@ import { effect as T, freeEnv as F } from "@matechs/effect";
  * Definition of a Logger module
  */
 
-export const LoggerURI = "@uris/Logger";
+export const LoggerURI = "@uris-free/Logger";
 
 const Logger_ = F.define({
   [LoggerURI]: {

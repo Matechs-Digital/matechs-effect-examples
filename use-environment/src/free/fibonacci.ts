@@ -6,7 +6,7 @@ import { Do } from "fp-ts-contrib/lib/Do";
  * Definition of a calculator module
  */
 
-export const FibonacciURI = "@uris/Fibonacci";
+export const FibonacciURI = "@uris-free/Fibonacci";
 
 const Fibonacci_ = F.define({
   [FibonacciURI]: {

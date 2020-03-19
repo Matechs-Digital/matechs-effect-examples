@@ -1,4 +1,4 @@
-name: API-Client Build & Test
+name: Use-Environment Build & Test
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
           node-version: 12.x
       - name: npm install, build, and test
         run: |
-          cd api-client;
+          cd use-environment;
           yarn;
           yarn build;
           yarn test;
